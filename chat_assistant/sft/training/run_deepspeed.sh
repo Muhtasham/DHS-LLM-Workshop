@@ -1,12 +1,12 @@
 accelerate launch --config_file "configs/deepspeed_config.yaml"  train.py \
 --seed 100 \
---model_name_or_path "mistralai/Mistral-7B-v0.1" \
---dataset_name "HuggingFaceH4/ultrachat_200k" \
---chat_template_format "chatml" \
+--model_name_or_path "meta-llama/Meta-Llama-3-70B" \
+--dataset_name "oscar-corpus/OSCAR-2301" \
+--chat_template_format "none" \
 --add_special_tokens False \
 --append_concat_token False \
 --splits "train_sft,test_sft" \
---max_seq_len 2048 \
+--max_seq_len 4096 \
 --num_train_epochs 1 \
 --logging_steps 5 \
 --log_level "info" \
@@ -29,5 +29,5 @@ accelerate launch --config_file "configs/deepspeed_config.yaml"  train.py \
 --gradient_accumulation_steps 4 \
 --gradient_checkpointing True \
 --use_reentrant False \
---dataset_text_field "content" \
+--dataset_text_field "text" \
 --use_flash_attn True

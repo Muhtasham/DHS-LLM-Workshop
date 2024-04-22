@@ -115,9 +115,10 @@ class ModelArguments:
 @dataclass
 class DataTrainingArguments:
     dataset_name: Optional[str] = field(
-        default="timdettmers/openassistant-guanaco",
+        default="oscar-corpus/OSCAR-2301",
         metadata={"help": "The preference dataset to use."},
     )
+    oscar_data_lang: Optional[str] = field(default='de', metadata={"help": "The input Oscar mono data language."})
     packing: Optional[bool] = field(
         default=False,
         metadata={"help": "Use packing dataset creating."},
@@ -141,6 +142,10 @@ class DataTrainingArguments:
     splits: Optional[str] = field(
         default="train,test",
         metadata={"help": "Comma separate list of the splits to use from the dataset."},
+    )
+    streaming: bool = field(
+        default=True,
+        metadata={"help": "Whether to use dataset's streaming mode to load and pre-process the data."},
     )
 
 
