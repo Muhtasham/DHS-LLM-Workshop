@@ -5,7 +5,7 @@ accelerate launch --config_file "configs/deepspeed_config.yaml"  train.py \
 --chat_template_format "none" \
 --add_special_tokens False \
 --append_concat_token False \
---splits "train_sft,test_sft" \
+--splits "train,test" \
 --max_seq_len 4096 \
 --num_train_epochs 1 \
 --logging_steps 5 \
