@@ -57,7 +57,7 @@ class ChatmlSpecialTokens(str, Enum):
         return [c.value for c in cls]
 
 
-def create_datasets(tokenizer, data_args, training_args, apply_chat_template=False):
+def create_datasets(tokenizer, data_args, training_args, apply_chat_template=False, name="CC-MAIN-2024-10", split="train"):
     def preprocess(samples):
         batch = []
         for conversation in samples["messages"]:
@@ -68,7 +68,7 @@ def create_datasets(tokenizer, data_args, training_args, apply_chat_template=Fal
     for split in data_args.splits.split(","):
         try:
             # Try first if dataset on a Hub repo
-            dataset = load_dataset(data_args.dataset_name, "en")
+            dataset = load_dataset(data_args.dataset_name, name=name, split=split)
             
         except DatasetGenerationError:
             # If not, check local dataset
