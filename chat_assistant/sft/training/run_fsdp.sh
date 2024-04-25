@@ -17,7 +17,7 @@ accelerate launch --config_file "configs/fsdp_config.yaml"  train.py \
 --hub_private_repo True \
 --hub_strategy "every_save" \
 --bf16 True \
---packing True \
+--packing False \
 --learning_rate 2e-5 \
 --lr_scheduler_type "cosine" \
 --weight_decay 0.0 \
