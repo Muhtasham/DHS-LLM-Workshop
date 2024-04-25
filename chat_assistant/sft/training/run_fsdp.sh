@@ -7,8 +7,8 @@ accelerate launch --config_file "configs/fsdp_config.yaml"  train.py \
 --append_concat_token False \
 --splits "train" \
 --max_seq_len 4096 \
---num_train_epochs 1 \
---logging_steps 5 \
+--num_train_epochs 4 \
+--logging_steps 100 \
 --log_level "info" \
 --logging_strategy "steps" \
 --evaluation_strategy "epoch" \
