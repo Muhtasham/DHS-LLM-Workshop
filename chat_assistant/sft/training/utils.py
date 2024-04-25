@@ -68,7 +68,8 @@ def create_datasets(tokenizer, data_args, training_args, apply_chat_template=Fal
     for split in data_args.splits.split(","):
         try:
             # Try first if dataset on a Hub repo
-            dataset = load_dataset(data_args.dataset_name, split=split)
+            dataset = load_dataset(data_args.dataset_name, "en")
+            
         except DatasetGenerationError:
             # If not, check local dataset
             dataset = load_from_disk(os.path.join(data_args.dataset_name, split))
@@ -89,6 +90,7 @@ def create_datasets(tokenizer, data_args, training_args, apply_chat_template=Fal
             remove_columns=raw_datasets["train"].column_names,
         )
 
+    raw_datasets = raw_datasets.train_test_split(test_size=0.1)    
     train_data = raw_datasets["train"]
     valid_data = raw_datasets["test"]
     print(
