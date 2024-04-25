@@ -1,11 +1,11 @@
 accelerate launch --config_file "configs/fsdp_config.yaml"  train.py \
 --seed 100 \
---model_name_or_path "meta-llama/Meta-Llama-3-70B" \
---dataset_name "oscar-corpus/OSCAR-2301" \
+--model_name_or_path "meta-llama/Meta-Llama-3-8B" \
+--dataset_name "HuggingFaceFW/fineweb" \
 --chat_template_format "none" \
 --add_special_tokens False \
 --append_concat_token False \
---splits "train,test" \
+--splits "train" \
 --max_seq_len 4096 \
 --num_train_epochs 1 \
 --logging_steps 5 \
